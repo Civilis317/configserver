@@ -6,4 +6,4 @@ COPY config-server*.jar config-server.jar
 
 EXPOSE 8888
 
-ENTRYPOINT ["java", "-Xmx512m", "-Xms256m", "-jar", "/config-server.jar"]
+ENTRYPOINT ["java","-Dspring.profiles.active=jdbc", "-Xmx512m", "-Xms256m", "-jar", "/config-server.jar"]
