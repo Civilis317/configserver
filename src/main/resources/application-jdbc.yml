@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    driver-class-name: ${DB_DRIVER_CLASS}
+    url: ${DB_CONNECT_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    show-sql: ${SHOW_SQL}
+    database-platform: ${DB_DIALECT}
+  h2:
+    console:
+      enabled: ${H2_CONSOLE_ENABLED}
+  flyway:
+    locations: ${DB_SCRIPTS_LOCATION}
+    placeholder-replacement: false  # this means the db can hold placeholders that the client will need to substitute
+  cloud:
+    config:
+      server:
+        encrypt:
+          enabled: false # the client needs to do the decrypting
+        jdbc:
+          sql: ${CONFIG_SQL}
+          order: 1

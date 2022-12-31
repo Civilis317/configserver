@@ -1,0 +1,47 @@
+
+server:
+  servlet:
+    context-path: /configserver/api
+  error:
+    include-message: always
+  tomcat:
+    remoteip:
+      remote-ip-header: x-forwarded-for
+      protocol-header: x-forwarded-proto
+  port: 8888
+
+logging:
+  level:
+    org.springframework: ${LOGLEVEL_SPRING:INFO}
+    org.boip.infra.configserver: ${LOGLEVEL_APPLICATION:INFO}
+
+management:
+  health:
+    db:
+      enabled: false
+    ldap:
+      enabled: false
+    rabbit:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+    enabled-by-default: false
+  endpoint:
+    health:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  server:
+    port: 8890
+
+# symmetric encryption
+encrypt:
+  key: ${ENCRYPTION_KEY}
